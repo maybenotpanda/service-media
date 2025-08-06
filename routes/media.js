@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const isBase64 = require("is-base64");
 const base64Img = require("base64-img");
+// const path = require("path");
 
 const { Media } = require("../models");
 
@@ -21,6 +22,9 @@ router.post("/", (req, res) => {
     // const filename = filepath.split("/").pop();
     // ! windows
     const filename = filepath.split("\\").pop().split("/").pop();
+
+    // ! alt
+    // const filename = path.basename(filepath);
 
     const media = await Media.create({ image: `image/${filename}` });
 
